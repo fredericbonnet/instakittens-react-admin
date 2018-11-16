@@ -1,12 +1,18 @@
 import React from 'react';
+import { Admin, Resource } from 'react-admin';
+
+import { UserList, UserCreate, UserShow, UserEdit } from './users';
+import { AlbumList, AlbumCreate, AlbumShow, AlbumEdit } from './albums';
+import { PhotoList, PhotoCreate, PhotoShow, PhotoEdit } from './photos';
 import {
-  Admin,
-  Resource,
-  ListGuesser,
-  ShowGuesser,
-  EditGuesser,
-} from 'react-admin';
+  CommentList,
+  CommentCreate,
+  CommentShow,
+  CommentEdit,
+} from './comments';
+
 import jsonServerProvider from 'ra-data-json-server';
+
 import './App.css';
 
 const dataProvider = jsonServerProvider('http://localhost:3000'); // FIXME hardcoded URL
@@ -15,27 +21,31 @@ const App = () => (
   <Admin dataProvider={dataProvider}>
     <Resource
       name="users"
-      list={ListGuesser}
-      show={ShowGuesser}
-      edit={EditGuesser}
+      list={UserList}
+      show={UserShow}
+      create={UserCreate}
+      edit={UserEdit}
     />
     <Resource
       name="albums"
-      list={ListGuesser}
-      show={ShowGuesser}
-      edit={EditGuesser}
+      list={AlbumList}
+      show={AlbumShow}
+      create={AlbumCreate}
+      edit={AlbumEdit}
     />
     <Resource
       name="photos"
-      list={ListGuesser}
-      show={ShowGuesser}
-      edit={EditGuesser}
+      list={PhotoList}
+      show={PhotoShow}
+      create={PhotoCreate}
+      edit={PhotoEdit}
     />
     <Resource
       name="comments"
-      list={ListGuesser}
-      show={ShowGuesser}
-      edit={EditGuesser}
+      list={CommentList}
+      show={CommentShow}
+      create={CommentCreate}
+      edit={CommentEdit}
     />
   </Admin>
 );
