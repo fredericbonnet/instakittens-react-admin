@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Instakittens React administration interface
+
+This project implements an administration interface for the [Instakittens
+project](https://github.com/fredericbonnet/instakittens).
+
+It is based on the awesome [React-admin](https://github.com/marmelab/react-admin/) framework that lets you build admin web apps on top of REST/GraphQL APIs very rapidly.
+
+It connects to the [Instakittens JSON Server](https://github.com/fredericbonnet/instakittens-json-server) backend on port 3000.
+
+## Project bootstrap
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) along with the React-Admin dependencies.
+
+```sh
+create-react-app instakittens-react-admin
+cd instakittens-react-admin
+npm install react-admin ra-data-json-server prop-types
+```
+
+The app's default port 3000 has been changed to 3001 in the [.env](.env) file.
 
 ## Available Scripts
 

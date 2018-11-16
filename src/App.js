@@ -1,28 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import {
+  Admin,
+  Resource,
+  ListGuesser,
+  ShowGuesser,
+  EditGuesser,
+} from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const dataProvider = jsonServerProvider('http://localhost:3000'); // FIXME hardcoded URL
+
+const App = () => (
+  <Admin dataProvider={dataProvider}>
+    <Resource
+      name="users"
+      list={ListGuesser}
+      show={ShowGuesser}
+      edit={EditGuesser}
+    />
+    <Resource
+      name="albums"
+      list={ListGuesser}
+      show={ShowGuesser}
+      edit={EditGuesser}
+    />
+    <Resource
+      name="photos"
+      list={ListGuesser}
+      show={ShowGuesser}
+      edit={EditGuesser}
+    />
+    <Resource
+      name="comments"
+      list={ListGuesser}
+      show={ShowGuesser}
+      edit={EditGuesser}
+    />
+  </Admin>
+);
 
 export default App;

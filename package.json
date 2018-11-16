@@ -1,9 +1,21 @@
 {
   "name": "instakittens-react-admin",
   "version": "0.1.0",
-  "private": true,
+  "description": "React-admin application for the Instakittens project",
+  "author": {
+    "name": "Frédéric Bonnet",
+    "email": "fredericbonnet@free.fr"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fredericbonnet/instakittens-react-admin.git"
+  },
   "dependencies": {
+    "prop-types": "^15.6.2",
+    "ra-data-json-server": "^2.4.2",
     "react": "^16.6.3",
+    "react-admin": "^2.4.2",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
   },
