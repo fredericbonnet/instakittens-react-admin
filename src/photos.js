@@ -14,7 +14,7 @@ import {
   DisabledInput,
   TextInput,
   ReferenceInput,
-  SelectInput,
+  AutocompleteInput,
   DateTimeInput,
   EditButton,
 } from 'react-admin';
@@ -54,7 +54,7 @@ export const PhotoCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput source="album_id" reference="albums">
-        <SelectInput optionText="title" />
+        <AutocompleteInput optionText="title" />
       </ReferenceInput>
       <TextInput source="title" />
       <TextInput source="url" />
@@ -69,7 +69,7 @@ export const PhotoEdit = props => (
     <SimpleForm>
       <DisabledInput source="id" />
       <ReferenceInput source="album_id" reference="albums">
-        <SelectInput optionText="title" />
+        <AutocompleteInput optionText="title" />
       </ReferenceInput>
       <TextInput source="title" />
       <TextInput source="url" />

@@ -13,7 +13,7 @@ import {
   DisabledInput,
   TextInput,
   ReferenceInput,
-  SelectInput,
+  AutocompleteInput,
   DateTimeInput,
   EditButton,
 } from 'react-admin';
@@ -55,10 +55,10 @@ export const CommentCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput source="photo_id" reference="photos">
-        <SelectInput optionText="title" />
+        <AutocompleteInput optionText="title" />
       </ReferenceInput>
       <ReferenceInput source="user_id" reference="users">
-        <SelectInput optionText="username" />
+        <AutocompleteInput optionText="username" />
       </ReferenceInput>
       <DateTimeInput source="date" />
       <TextInput source="message" />
@@ -71,10 +71,10 @@ export const CommentEdit = props => (
     <SimpleForm>
       <DisabledInput source="id" />
       <ReferenceInput source="photo_id" reference="photos">
-        <SelectInput optionText="title" />
+        <AutocompleteInput optionText="title" />
       </ReferenceInput>
       <ReferenceInput source="user_id" reference="users">
-        <SelectInput optionText="username" />
+        <AutocompleteInput optionText="username" />
       </ReferenceInput>
       <DateTimeInput source="date" />
       <TextInput source="message" />

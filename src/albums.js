@@ -12,7 +12,7 @@ import {
   DisabledInput,
   TextInput,
   ReferenceInput,
-  SelectInput,
+  AutocompleteInput,
   EditButton,
 } from 'react-admin';
 
@@ -49,7 +49,7 @@ export const AlbumCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput source="user_id" reference="users">
-        <SelectInput optionText="username" />
+        <AutocompleteInput optionText="username" />
       </ReferenceInput>
       <TextInput source="title" />
       <TextInput source="type" />
@@ -63,7 +63,7 @@ export const AlbumEdit = props => (
     <SimpleForm>
       <DisabledInput source="id" />
       <ReferenceInput source="user_id" reference="users">
-        <SelectInput optionText="username" />
+        <AutocompleteInput optionText="username" />
       </ReferenceInput>
       <TextInput source="title" />
       <TextInput source="type" />
