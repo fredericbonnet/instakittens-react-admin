@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   List,
+  Filter,
   Datagrid,
   TextField,
   ReferenceField,
@@ -35,9 +36,16 @@ export const UserReferenceInput = props => (
   </ReferenceInput>
 );
 
+/** User list filters */
+const UserFilters = props => (
+  <Filter {...props}>
+    <TextInput label="Search" source="q" alwaysOn />
+  </Filter>
+);
+
 /** User list view */
 export const UserList = props => (
-  <List {...props}>
+  <List filters={<UserFilters />} {...props}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="username" />
