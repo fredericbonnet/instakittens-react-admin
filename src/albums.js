@@ -16,13 +16,31 @@ import {
   EditButton,
 } from 'react-admin';
 
+import { UserReferenceField, UserReferenceInput } from './users';
+
+/** Album reference field */
+export const AlbumReferenceField = props => (
+  <ReferenceField reference="albums" {...props}>
+    <TextField source="title" />
+  </ReferenceField>
+);
+AlbumReferenceField.defaultProps = {
+  addLabel: true,
+};
+
+/** Album reference input. */
+export const AlbumReferenceInput = props => (
+  <ReferenceInput reference="albums" {...props}>
+    <AutocompleteInput optionText="title" />
+  </ReferenceInput>
+);
+
+/** Album list view */
 export const AlbumList = props => (
   <List {...props}>
     <Datagrid>
       <TextField source="id" />
-      <ReferenceField source="user_id" reference="users">
-        <TextField source="username" />
-      </ReferenceField>
+      <UserReferenceField source="user_id" />
       <TextField source="title" />
       <TextField source="type" />
       <TextField source="description" />
@@ -31,13 +49,12 @@ export const AlbumList = props => (
   </List>
 );
 
+/** Album show view */
 export const AlbumShow = props => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
-      <ReferenceField source="user_id" reference="users">
-        <TextField source="username" />
-      </ReferenceField>
+      <UserReferenceField source="user_id" />
       <TextField source="title" />
       <TextField source="type" />
       <TextField source="description" />
@@ -45,12 +62,11 @@ export const AlbumShow = props => (
   </Show>
 );
 
+/** Album create view */
 export const AlbumCreate = props => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="user_id" reference="users">
-        <AutocompleteInput optionText="username" />
-      </ReferenceInput>
+      <UserReferenceInput source="user_id" />
       <TextInput source="title" />
       <TextInput source="type" />
       <TextInput source="description" />
@@ -58,13 +74,12 @@ export const AlbumCreate = props => (
   </Create>
 );
 
+/** Album edit view */
 export const AlbumEdit = props => (
   <Edit {...props}>
     <SimpleForm>
       <DisabledInput source="id" />
-      <ReferenceInput source="user_id" reference="users">
-        <AutocompleteInput optionText="username" />
-      </ReferenceInput>
+      <UserReferenceInput source="user_id" />
       <TextInput source="title" />
       <TextInput source="type" />
       <TextInput source="description" />

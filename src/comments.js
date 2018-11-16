@@ -3,7 +3,6 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
   DateField,
   Show,
   SimpleShowLayout,
@@ -12,22 +11,20 @@ import {
   SimpleForm,
   DisabledInput,
   TextInput,
-  ReferenceInput,
-  AutocompleteInput,
   DateTimeInput,
   EditButton,
 } from 'react-admin';
 
+import { UserReferenceField, UserReferenceInput } from './users';
+import { PhotoReferenceField, PhotoReferenceInput } from './photos';
+
+/** Comment list view */
 export const CommentList = props => (
   <List {...props}>
     <Datagrid>
       <TextField source="id" />
-      <ReferenceField source="photo_id" reference="photos">
-        <TextField source="title" />
-      </ReferenceField>
-      <ReferenceField source="user_id" reference="users">
-        <TextField source="username" />
-      </ReferenceField>
+      <PhotoReferenceField source="photo_id" />
+      <UserReferenceField source="user_id" />
       <DateField source="date" showTime="true" />
       <TextField source="message" />
       <EditButton />
@@ -35,47 +32,38 @@ export const CommentList = props => (
   </List>
 );
 
+/** Comment show view */
 export const CommentShow = props => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
-      <ReferenceField source="photo_id" reference="photos">
-        <TextField source="title" />
-      </ReferenceField>
-      <ReferenceField source="user_id" reference="users">
-        <TextField source="username" />
-      </ReferenceField>
+      <PhotoReferenceField source="photo_id" />
+      <UserReferenceField source="user_id" />
       <DateField source="date" showTime="true" />
       <TextField source="message" />
     </SimpleShowLayout>
   </Show>
 );
 
+/** Comment create view */
 export const CommentCreate = props => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="photo_id" reference="photos">
-        <AutocompleteInput optionText="title" />
-      </ReferenceInput>
-      <ReferenceInput source="user_id" reference="users">
-        <AutocompleteInput optionText="username" />
-      </ReferenceInput>
+      <PhotoReferenceInput source="photo_id" />
+      <UserReferenceInput source="user_id" />
       <DateTimeInput source="date" />
       <TextInput source="message" />
     </SimpleForm>
   </Create>
 );
 
+/** Comment edit view */
 export const CommentEdit = props => (
   <Edit {...props}>
     <SimpleForm>
       <DisabledInput source="id" />
-      <ReferenceInput source="photo_id" reference="photos">
-        <AutocompleteInput optionText="title" />
-      </ReferenceInput>
-      <ReferenceInput source="user_id" reference="users">
-        <AutocompleteInput optionText="username" />
-      </ReferenceInput>
+      <PhotoReferenceInput source="photo_id" />
+      <UserReferenceInput source="user_id" />
       <DateTimeInput source="date" />
       <TextInput source="message" />
     </SimpleForm>
