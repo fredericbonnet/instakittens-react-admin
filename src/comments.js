@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   List,
+  Filter,
   Datagrid,
   TextField,
   DateField,
@@ -18,9 +19,18 @@ import {
 import { UserReferenceField, UserReferenceInput } from './users';
 import { PhotoReferenceField, PhotoReferenceInput } from './photos';
 
+/** Comment list filters */
+const CommentFilters = props => (
+  <Filter {...props}>
+    <TextInput label="Search" source="q" alwaysOn />
+    <PhotoReferenceInput source="photo_id" />
+    <UserReferenceInput source="user_id" />
+  </Filter>
+);
+
 /** Comment list view */
 export const CommentList = props => (
-  <List {...props}>
+  <List filters={<CommentFilters />} {...props}>
     <Datagrid>
       <TextField source="id" />
       <PhotoReferenceField source="photo_id" />

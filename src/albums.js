@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   List,
+  Filter,
   Datagrid,
   TextField,
   ReferenceField,
@@ -35,9 +36,17 @@ export const AlbumReferenceInput = props => (
   </ReferenceInput>
 );
 
+/** Album list filters */
+const AlbumFilters = props => (
+  <Filter {...props}>
+    <TextInput label="Search" source="q" alwaysOn />
+    <UserReferenceInput source="user_id" allowEmpty />
+  </Filter>
+);
+
 /** Album list view */
 export const AlbumList = props => (
-  <List {...props}>
+  <List filters={<AlbumFilters />} {...props}>
     <Datagrid>
       <TextField source="id" />
       <UserReferenceField source="user_id" />

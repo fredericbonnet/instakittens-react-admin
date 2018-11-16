@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   List,
+  Filter,
   Datagrid,
   TextField,
   ReferenceField,
@@ -38,9 +39,17 @@ export const PhotoReferenceInput = props => (
   </ReferenceInput>
 );
 
+/** Photo list filters */
+const PhotoFilters = props => (
+  <Filter {...props}>
+    <TextInput label="Search" source="q" alwaysOn />
+    <AlbumReferenceInput source="album_id" />
+  </Filter>
+);
+
 /** Photo list view */
 export const PhotoList = props => (
-  <List {...props}>
+  <List filters={<PhotoFilters />} {...props}>
     <Datagrid>
       <TextField source="id" />
       <AlbumReferenceField source="album_id" />
