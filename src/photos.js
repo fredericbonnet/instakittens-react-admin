@@ -19,13 +19,31 @@ import {
   EditButton,
 } from 'react-admin';
 
+import { AlbumReferenceField, AlbumReferenceInput } from './albums';
+
+/** Photo reference field */
+export const PhotoReferenceField = props => (
+  <ReferenceField reference="photos" {...props}>
+    <TextField source="title" />
+  </ReferenceField>
+);
+PhotoReferenceField.defaultProps = {
+  addLabel: true,
+};
+
+/** Photo reference input. */
+export const PhotoReferenceInput = props => (
+  <ReferenceInput reference="photos" {...props}>
+    <AutocompleteInput optionText="title" />
+  </ReferenceInput>
+);
+
+/** Photo list view */
 export const PhotoList = props => (
   <List {...props}>
     <Datagrid>
       <TextField source="id" />
-      <ReferenceField source="album_id" reference="albums">
-        <TextField source="title" />
-      </ReferenceField>
+      <AlbumReferenceField source="album_id" />
       <TextField source="title" />
       <ImageField source="url" />
       <DateField source="date" showTime={true} />
@@ -35,13 +53,12 @@ export const PhotoList = props => (
   </List>
 );
 
+/** Photo show view */
 export const PhotoShow = props => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
-      <ReferenceField source="album_id" reference="albums">
-        <TextField source="title" />
-      </ReferenceField>
+      <AlbumReferenceField source="album_id" />
       <TextField source="title" />
       <ImageField source="url" />
       <DateField source="date" showTime={true} />
@@ -50,12 +67,11 @@ export const PhotoShow = props => (
   </Show>
 );
 
+/** Photo create view */
 export const PhotoCreate = props => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="album_id" reference="albums">
-        <AutocompleteInput optionText="title" />
-      </ReferenceInput>
+      <AlbumReferenceInput source="album_id" />
       <TextInput source="title" />
       <TextInput source="url" />
       <DateTimeInput source="date" />
@@ -64,13 +80,12 @@ export const PhotoCreate = props => (
   </Create>
 );
 
+/** Photo edit view */
 export const PhotoEdit = props => (
   <Edit {...props}>
     <SimpleForm>
       <DisabledInput source="id" />
-      <ReferenceInput source="album_id" reference="albums">
-        <AutocompleteInput optionText="title" />
-      </ReferenceInput>
+      <AlbumReferenceInput source="album_id" />
       <TextInput source="title" />
       <TextInput source="url" />
       <DateTimeInput source="date" />

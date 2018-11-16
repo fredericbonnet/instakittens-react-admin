@@ -3,6 +3,7 @@ import {
   List,
   Datagrid,
   TextField,
+  ReferenceField,
   EmailField,
   ImageField,
   Show,
@@ -12,9 +13,29 @@ import {
   SimpleForm,
   DisabledInput,
   TextInput,
+  ReferenceInput,
+  AutocompleteInput,
   EditButton,
 } from 'react-admin';
 
+/** User reference field */
+export const UserReferenceField = props => (
+  <ReferenceField reference="users" {...props}>
+    <TextField source="username" />
+  </ReferenceField>
+);
+UserReferenceField.defaultProps = {
+  addLabel: true,
+};
+
+/** User reference input. */
+export const UserReferenceInput = props => (
+  <ReferenceInput reference="users" {...props}>
+    <AutocompleteInput optionText="username" />
+  </ReferenceInput>
+);
+
+/** User list view */
 export const UserList = props => (
   <List {...props}>
     <Datagrid>
@@ -29,6 +50,7 @@ export const UserList = props => (
   </List>
 );
 
+/** User show view */
 export const UserShow = props => (
   <Show {...props}>
     <SimpleShowLayout>
@@ -42,6 +64,7 @@ export const UserShow = props => (
   </Show>
 );
 
+/** User create view */
 export const UserCreate = props => (
   <Create {...props}>
     <SimpleForm>
@@ -54,6 +77,7 @@ export const UserCreate = props => (
   </Create>
 );
 
+/** User edit view */
 export const UserEdit = props => (
   <Edit {...props}>
     <SimpleForm>
