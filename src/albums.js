@@ -5,11 +5,15 @@ import {
   Datagrid,
   TextField,
   ReferenceField,
+  ReferenceManyField,
   Show,
-  SimpleShowLayout,
+  TabbedShowLayout,
+  Tab,
   Create,
   Edit,
   SimpleForm,
+  TabbedForm,
+  FormTab,
   DisabledInput,
   TextInput,
   ReferenceInput,
@@ -18,6 +22,7 @@ import {
 } from 'react-admin';
 
 import { UserReferenceField, UserReferenceInput } from './users';
+import { PhotoReferenceManyField } from './photos';
 
 /** Album reference field */
 export const AlbumReferenceField = props => (
@@ -34,6 +39,20 @@ export const AlbumReferenceInput = props => (
   <ReferenceInput reference="albums" {...props}>
     <AutocompleteInput optionText="title" />
   </ReferenceInput>
+);
+
+/** Album reference list */
+export const AlbumReferenceManyField = props => (
+  <ReferenceManyField reference="albums" {...props}>
+    <Datagrid>
+      <TextField source="id" />
+      {props.target !== 'user_id' && <UserReferenceField source="user_id" />}
+      <TextField source="title" />
+      <TextField source="type" />
+      <TextField source="description" />
+      <EditButton />
+    </Datagrid>
+  </ReferenceManyField>
 );
 
 /** Album list filters */
@@ -61,13 +80,18 @@ export const AlbumList = props => (
 /** Album show view */
 export const AlbumShow = props => (
   <Show {...props}>
-    <SimpleShowLayout>
-      <TextField source="id" />
-      <UserReferenceField source="user_id" />
-      <TextField source="title" />
-      <TextField source="type" />
-      <TextField source="description" />
-    </SimpleShowLayout>
+    <TabbedShowLayout>
+      <Tab label="Summary">
+        <TextField source="id" />
+        <UserReferenceField source="user_id" />
+        <TextField source="title" />
+        <TextField source="type" />
+        <TextField source="description" />
+      </Tab>
+      <Tab label="Photos" path="photos">
+        <PhotoReferenceManyField target="album_id" addLabel={false} />
+      </Tab>
+    </TabbedShowLayout>
   </Show>
 );
 
@@ -86,12 +110,17 @@ export const AlbumCreate = props => (
 /** Album edit view */
 export const AlbumEdit = props => (
   <Edit {...props}>
-    <SimpleForm>
-      <DisabledInput source="id" />
-      <UserReferenceInput source="user_id" />
-      <TextInput source="title" />
-      <TextInput source="type" />
-      <TextInput source="description" />
-    </SimpleForm>
+    <TabbedForm>
+      <FormTab label="Summary">
+        <DisabledInput source="id" />
+        <UserReferenceInput source="user_id" />
+        <TextInput source="title" />
+        <TextInput source="type" />
+        <TextInput source="description" />
+      </FormTab>
+      <FormTab label="Photos" path="photos">
+        <PhotoReferenceManyField target="album_id" addLabel={false} />
+      </FormTab>
+    </TabbedForm>
   </Edit>
 );
