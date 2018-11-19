@@ -8,16 +8,22 @@ import {
   EmailField,
   ImageField,
   Show,
-  SimpleShowLayout,
+  TabbedShowLayout,
+  Tab,
   Create,
   Edit,
   SimpleForm,
+  TabbedForm,
+  FormTab,
   DisabledInput,
   TextInput,
   ReferenceInput,
   AutocompleteInput,
   EditButton,
 } from 'react-admin';
+
+import { AlbumReferenceManyField } from './albums';
+import { CommentReferenceManyField } from './comments';
 
 /** User reference field */
 export const UserReferenceField = props => (
@@ -61,14 +67,22 @@ export const UserList = props => (
 /** User show view */
 export const UserShow = props => (
   <Show {...props}>
-    <SimpleShowLayout>
-      <TextField source="id" />
-      <TextField source="username" />
-      <TextField source="firstName" />
-      <TextField source="lastName" />
-      <EmailField source="email" />
-      <ImageField source="avatar" />
-    </SimpleShowLayout>
+    <TabbedShowLayout>
+      <Tab label="Summary">
+        <TextField source="id" />
+        <TextField source="username" />
+        <TextField source="firstName" />
+        <TextField source="lastName" />
+        <EmailField source="email" />
+        <ImageField source="avatar" />
+      </Tab>
+      <Tab label="Albums" path="albums">
+        <AlbumReferenceManyField target="user_id" addLabel={false} />
+      </Tab>
+      <Tab label="Comments" path="comments">
+        <CommentReferenceManyField target="user_id" addLabel={false} />
+      </Tab>
+    </TabbedShowLayout>
   </Show>
 );
 
@@ -88,13 +102,21 @@ export const UserCreate = props => (
 /** User edit view */
 export const UserEdit = props => (
   <Edit {...props}>
-    <SimpleForm>
-      <DisabledInput source="id" />
-      <TextInput source="username" />
-      <TextInput source="firstName" />
-      <TextInput source="lastName" />
-      <TextInput source="email" />
-      <TextInput source="avatar" />
-    </SimpleForm>
+    <TabbedForm>
+      <FormTab label="Summary">
+        <DisabledInput source="id" />
+        <TextInput source="username" />
+        <TextInput source="firstName" />
+        <TextInput source="lastName" />
+        <TextInput source="email" />
+        <TextInput source="avatar" />
+      </FormTab>
+      <FormTab label="Albums" path="albums">
+        <AlbumReferenceManyField target="user_id" addLabel={false} />
+      </FormTab>
+      <FormTab label="Comments" path="comments">
+        <CommentReferenceManyField target="user_id" addLabel={false} />
+      </FormTab>
+    </TabbedForm>
   </Edit>
 );

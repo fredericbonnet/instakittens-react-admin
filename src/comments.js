@@ -5,6 +5,7 @@ import {
   Datagrid,
   TextField,
   DateField,
+  ReferenceManyField,
   Show,
   SimpleShowLayout,
   Create,
@@ -18,6 +19,20 @@ import {
 
 import { UserReferenceField, UserReferenceInput } from './users';
 import { PhotoReferenceField, PhotoReferenceInput } from './photos';
+
+/** Comment reference list */
+export const CommentReferenceManyField = props => (
+  <ReferenceManyField reference="comments" {...props}>
+    <Datagrid>
+      <TextField source="id" />
+      {props.target !== 'photo_id' && <PhotoReferenceField source="photo_id" />}
+      {props.target !== 'user_id' && <UserReferenceField source="user_id" />}
+      <DateField source="date" showTime="true" />
+      <TextField source="message" />
+      <EditButton />
+    </Datagrid>
+  </ReferenceManyField>
+);
 
 /** Comment list filters */
 const CommentFilters = props => (

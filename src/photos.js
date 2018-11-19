@@ -5,13 +5,17 @@ import {
   Datagrid,
   TextField,
   ReferenceField,
+  ReferenceManyField,
   ImageField,
   DateField,
   Show,
-  SimpleShowLayout,
+  TabbedShowLayout,
+  Tab,
   Create,
   Edit,
   SimpleForm,
+  TabbedForm,
+  FormTab,
   DisabledInput,
   TextInput,
   ReferenceInput,
@@ -21,6 +25,7 @@ import {
 } from 'react-admin';
 
 import { AlbumReferenceField, AlbumReferenceInput } from './albums';
+import { CommentReferenceManyField } from './comments';
 
 /** Photo reference field */
 export const PhotoReferenceField = props => (
@@ -37,6 +42,21 @@ export const PhotoReferenceInput = props => (
   <ReferenceInput reference="photos" {...props}>
     <AutocompleteInput optionText="title" />
   </ReferenceInput>
+);
+
+/** Photo reference list */
+export const PhotoReferenceManyField = props => (
+  <ReferenceManyField reference="photos" {...props}>
+    <Datagrid>
+      <TextField source="id" />
+      {props.target !== 'album_id' && <AlbumReferenceField source="album_id" />}
+      <TextField source="title" />
+      <ImageField source="url" />
+      <DateField source="date" showTime="true" />
+      <TextField source="description" />
+      <EditButton />
+    </Datagrid>
+  </ReferenceManyField>
 );
 
 /** Photo list filters */
@@ -65,14 +85,19 @@ export const PhotoList = props => (
 /** Photo show view */
 export const PhotoShow = props => (
   <Show {...props}>
-    <SimpleShowLayout>
-      <TextField source="id" />
-      <AlbumReferenceField source="album_id" />
-      <TextField source="title" />
-      <ImageField source="url" />
-      <DateField source="date" showTime="true" />
-      <TextField source="description" />
-    </SimpleShowLayout>
+    <TabbedShowLayout>
+      <Tab label="Summary">
+        <TextField source="id" />
+        <AlbumReferenceField source="album_id" />
+        <TextField source="title" />
+        <ImageField source="url" />
+        <DateField source="date" showTime="true" />
+        <TextField source="description" />
+      </Tab>
+      <Tab label="Comments" path="comments">
+        <CommentReferenceManyField target="photo_id" addLabel={false} />
+      </Tab>
+    </TabbedShowLayout>
   </Show>
 );
 
@@ -92,13 +117,18 @@ export const PhotoCreate = props => (
 /** Photo edit view */
 export const PhotoEdit = props => (
   <Edit {...props}>
-    <SimpleForm>
-      <DisabledInput source="id" />
-      <AlbumReferenceInput source="album_id" />
-      <TextInput source="title" />
-      <TextInput source="url" />
-      <DateTimeInput source="date" />
-      <TextInput source="description" />
-    </SimpleForm>
+    <TabbedForm>
+      <FormTab label="Summary">
+        <DisabledInput source="id" />
+        <AlbumReferenceInput source="album_id" />
+        <TextInput source="title" />
+        <TextInput source="url" />
+        <DateTimeInput source="date" />
+        <TextInput source="description" />
+      </FormTab>
+      <FormTab label="Comments" path="comments">
+        <CommentReferenceManyField target="photo_id" addLabel={false} />
+      </FormTab>
+    </TabbedForm>
   </Edit>
 );
