@@ -12,13 +12,17 @@ import {
 } from './comments';
 
 import jsonServerProvider from 'ra-data-json-server';
+import { authProvider, httpClient } from './auth-basic';
 
 import './App.css';
 
-const dataProvider = jsonServerProvider('http://localhost:3000'); // FIXME hardcoded URL
+const dataProvider = jsonServerProvider(
+  process.env.REACT_APP_API_URL,
+  httpClient
+);
 
 const App = () => (
-  <Admin dataProvider={dataProvider}>
+  <Admin dataProvider={dataProvider} authProvider={authProvider}>
     <Resource
       name="users"
       list={UserList}
