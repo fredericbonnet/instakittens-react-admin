@@ -27,6 +27,10 @@ import {
 import { AlbumReferenceField, AlbumReferenceInput } from './albums';
 import { CommentReferenceManyField } from './comments';
 
+/** Photo icon */
+import PhotoIcon from '@material-ui/icons/Photo';
+export { PhotoIcon };
+
 /** Photo reference field */
 export const PhotoReferenceField = props => (
   <ReferenceField reference="photos" {...props}>
