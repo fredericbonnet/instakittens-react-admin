@@ -1,10 +1,23 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
 
-import { UserList, UserCreate, UserShow, UserEdit } from './users';
-import { AlbumList, AlbumCreate, AlbumShow, AlbumEdit } from './albums';
-import { PhotoList, PhotoCreate, PhotoShow, PhotoEdit } from './photos';
+import { UserIcon, UserList, UserCreate, UserShow, UserEdit } from './users';
 import {
+  AlbumIcon,
+  AlbumList,
+  AlbumCreate,
+  AlbumShow,
+  AlbumEdit,
+} from './albums';
+import {
+  PhotoIcon,
+  PhotoList,
+  PhotoCreate,
+  PhotoShow,
+  PhotoEdit,
+} from './photos';
+import {
+  CommentIcon,
   CommentList,
   CommentCreate,
   CommentShow,
@@ -25,6 +38,7 @@ const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
     <Resource
       name="users"
+      icon={UserIcon}
       list={UserList}
       show={UserShow}
       create={UserCreate}
@@ -32,6 +46,7 @@ const App = () => (
     />
     <Resource
       name="albums"
+      icon={AlbumIcon}
       list={AlbumList}
       show={AlbumShow}
       create={AlbumCreate}
@@ -39,6 +54,7 @@ const App = () => (
     />
     <Resource
       name="photos"
+      icon={PhotoIcon}
       list={PhotoList}
       show={PhotoShow}
       create={PhotoCreate}
@@ -46,6 +62,7 @@ const App = () => (
     />
     <Resource
       name="comments"
+      icon={CommentIcon}
       list={CommentList}
       show={CommentShow}
       create={CommentCreate}

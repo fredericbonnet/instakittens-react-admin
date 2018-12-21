@@ -20,6 +20,10 @@ import {
 import { UserReferenceField, UserReferenceInput } from './users';
 import { PhotoReferenceField, PhotoReferenceInput } from './photos';
 
+/** Comment icon */
+import CommentIcon from '@material-ui/icons/Comment';
+export { CommentIcon };
+
 /** Comment reference list */
 export const CommentReferenceManyField = props => (
   <ReferenceManyField reference="comments" {...props}>
