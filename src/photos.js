@@ -6,6 +6,7 @@ import {
   TextField,
   ReferenceField,
   ReferenceManyField,
+  Pagination,
   ImageField,
   DateField,
   Show,
@@ -50,7 +51,12 @@ export const PhotoReferenceInput = props => (
 
 /** Photo reference list */
 export const PhotoReferenceManyField = props => (
-  <ReferenceManyField reference="photos" {...props}>
+  <ReferenceManyField
+    pagination={<Pagination />}
+    perPage={10}
+    reference="photos"
+    {...props}
+  >
     <Datagrid>
       <TextField source="id" />
       {props.target !== 'album_id' && <AlbumReferenceField source="album_id" />}

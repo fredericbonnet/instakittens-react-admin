@@ -6,6 +6,7 @@ import {
   TextField,
   DateField,
   ReferenceManyField,
+  Pagination,
   Show,
   SimpleShowLayout,
   Create,
@@ -26,7 +27,12 @@ export { CommentIcon };
 
 /** Comment reference list */
 export const CommentReferenceManyField = props => (
-  <ReferenceManyField reference="comments" {...props}>
+  <ReferenceManyField
+    pagination={<Pagination />}
+    perPage={10}
+    reference="comments"
+    {...props}
+  >
     <Datagrid>
       <TextField source="id" />
       {props.target !== 'photo_id' && <PhotoReferenceField source="photo_id" />}
