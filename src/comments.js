@@ -37,7 +37,7 @@ export const CommentReferenceManyField = props => (
       <TextField source="id" />
       {props.target !== 'photo_id' && <PhotoReferenceField source="photo_id" />}
       {props.target !== 'user_id' && <UserReferenceField source="user_id" />}
-      <DateField source="date" showTime="true" />
+      <DateField source="date" showTime={true} />
       <TextField source="message" />
       <EditButton />
     </Datagrid>
@@ -60,7 +60,7 @@ export const CommentList = props => (
       <TextField source="id" />
       <PhotoReferenceField source="photo_id" />
       <UserReferenceField source="user_id" />
-      <DateField source="date" showTime="true" />
+      <DateField source="date" showTime={true} />
       <TextField source="message" />
       <EditButton />
     </Datagrid>
@@ -74,7 +74,7 @@ export const CommentShow = props => (
       <TextField source="id" />
       <PhotoReferenceField source="photo_id" />
       <UserReferenceField source="user_id" />
-      <DateField source="date" showTime="true" />
+      <DateField source="date" showTime={true} />
       <TextField source="message" />
     </SimpleShowLayout>
   </Show>

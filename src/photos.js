@@ -62,7 +62,7 @@ export const PhotoReferenceManyField = props => (
       {props.target !== 'album_id' && <AlbumReferenceField source="album_id" />}
       <TextField source="title" />
       <ImageField source="url" />
-      <DateField source="date" showTime="true" />
+      <DateField source="date" showTime={true} />
       <TextField source="description" />
       <EditButton />
     </Datagrid>
@@ -85,7 +85,7 @@ export const PhotoList = props => (
       <AlbumReferenceField source="album_id" />
       <TextField source="title" />
       <ImageField source="url" />
-      <DateField source="date" showTime="true" />
+      <DateField source="date" showTime={true} />
       <TextField source="description" />
       <EditButton />
     </Datagrid>
@@ -101,7 +101,7 @@ export const PhotoShow = props => (
         <AlbumReferenceField source="album_id" />
         <TextField source="title" />
         <ImageField source="url" />
-        <DateField source="date" showTime="true" />
+        <DateField source="date" showTime={true} />
         <TextField source="description" />
       </Tab>
       <Tab label="Comments" path="comments">
