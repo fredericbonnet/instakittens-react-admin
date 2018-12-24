@@ -21,6 +21,7 @@ import {
   AutocompleteInput,
   EditButton,
 } from 'react-admin';
+import CreateRelatedButton from './CreateRelatedButton';
 
 import { UserReferenceField, UserReferenceInput } from './users';
 import { PhotoReferenceManyField } from './photos';
@@ -99,6 +100,7 @@ export const AlbumShow = props => (
         <TextField source="description" />
       </Tab>
       <Tab label="Photos" path="photos">
+        <CreateRelatedButton target="album_id" related="photos" />
         <PhotoReferenceManyField target="album_id" addLabel={false} />
       </Tab>
     </TabbedShowLayout>
@@ -129,6 +131,7 @@ export const AlbumEdit = props => (
         <TextInput source="description" />
       </FormTab>
       <FormTab label="Photos" path="photos">
+        <CreateRelatedButton target="album_id" related="photos" />
         <PhotoReferenceManyField target="album_id" addLabel={false} />
       </FormTab>
     </TabbedForm>
