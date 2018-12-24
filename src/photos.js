@@ -24,6 +24,7 @@ import {
   DateTimeInput,
   EditButton,
 } from 'react-admin';
+import CreateRelatedButton from './CreateRelatedButton';
 
 import { AlbumReferenceField, AlbumReferenceInput } from './albums';
 import { CommentReferenceManyField } from './comments';
@@ -105,6 +106,7 @@ export const PhotoShow = props => (
         <TextField source="description" />
       </Tab>
       <Tab label="Comments" path="comments">
+        <CreateRelatedButton target="photo_id" related="comments" />
         <CommentReferenceManyField target="photo_id" addLabel={false} />
       </Tab>
     </TabbedShowLayout>
@@ -137,6 +139,7 @@ export const PhotoEdit = props => (
         <TextInput source="description" />
       </FormTab>
       <FormTab label="Comments" path="comments">
+        <CreateRelatedButton target="photo_id" related="comments" />
         <CommentReferenceManyField target="photo_id" addLabel={false} />
       </FormTab>
     </TabbedForm>
