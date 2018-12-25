@@ -88,7 +88,7 @@ export function authProvider(type, params) {
 
   // Called when the user navigates to a new location.
   if (type === AUTH_CHECK) {
-    return localStorage.getItem(AUTHORIZATION_HEADER_KEY)
+    return localStorage.getItem(USER_ROLE_KEY) === 'admin'
       ? Promise.resolve()
       : Promise.reject();
   }
