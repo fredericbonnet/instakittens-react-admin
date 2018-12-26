@@ -19,6 +19,7 @@ import {
   TextInput,
   ReferenceInput,
   AutocompleteInput,
+  ShowButton,
   EditButton,
 } from 'react-admin';
 import CreateRelatedButton from './CreateRelatedButton';
@@ -64,6 +65,7 @@ export const UserList = props => (
       <TextField source="lastName" />
       <EmailField source="email" />
       <ImageField source="avatar" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>

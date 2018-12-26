@@ -15,6 +15,7 @@ import {
   DisabledInput,
   TextInput,
   DateTimeInput,
+  ShowButton,
   EditButton,
 } from 'react-admin';
 
@@ -39,6 +40,7 @@ export const CommentReferenceManyField = props => (
       {props.target !== 'user_id' && <UserReferenceField source="user_id" />}
       <DateField source="date" showTime={true} />
       <TextField source="message" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </ReferenceManyField>
@@ -62,6 +64,7 @@ export const CommentList = props => (
       <UserReferenceField source="user_id" />
       <DateField source="date" showTime={true} />
       <TextField source="message" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>

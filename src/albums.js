@@ -19,6 +19,7 @@ import {
   TextInput,
   ReferenceInput,
   AutocompleteInput,
+  ShowButton,
   EditButton,
 } from 'react-admin';
 import CreateRelatedButton from './CreateRelatedButton';
@@ -61,6 +62,7 @@ export const AlbumReferenceManyField = props => (
       <TextField source="title" />
       <TextField source="type" />
       <TextField source="description" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </ReferenceManyField>
@@ -83,6 +85,7 @@ export const AlbumList = props => (
       <TextField source="title" />
       <TextField source="type" />
       <TextField source="description" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>

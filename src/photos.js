@@ -22,6 +22,7 @@ import {
   ReferenceInput,
   AutocompleteInput,
   DateTimeInput,
+  ShowButton,
   EditButton,
 } from 'react-admin';
 import CreateRelatedButton from './CreateRelatedButton';
@@ -65,6 +66,7 @@ export const PhotoReferenceManyField = props => (
       <ImageField source="url" />
       <DateField source="date" showTime={true} />
       <TextField source="description" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </ReferenceManyField>
@@ -88,6 +90,7 @@ export const PhotoList = props => (
       <ImageField source="url" />
       <DateField source="date" showTime={true} />
       <TextField source="description" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>
