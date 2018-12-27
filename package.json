@@ -23,6 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "e2e": "jest -c e2e/jest.config.js",
+    "e2e:watch": "jest -c e2e/jest.config.js --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -33,5 +35,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "jest-puppeteer": "^3.7.0",
+    "puppeteer": "^1.11.0"
+  }
 }
