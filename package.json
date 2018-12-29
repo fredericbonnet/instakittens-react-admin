@@ -25,6 +25,8 @@
     "test": "react-scripts test",
     "e2e": "jest -c e2e/jest.config.js",
     "e2e:watch": "jest -c e2e/jest.config.js --watch",
+    "cucumber": "cucumber-js",
+    "cucumber:watch": "nodemon -e js,feature -x npx cucumber-js --profile watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -37,8 +39,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-exclude": "^1.0.12",
+    "cucumber": "^5.0.3",
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.7.0",
+    "nodemon": "^1.18.9",
     "puppeteer": "^1.11.0"
   }
 }
