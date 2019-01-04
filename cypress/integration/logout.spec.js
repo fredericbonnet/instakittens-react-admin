@@ -1,6 +1,14 @@
 /// <reference types="Cypress" />
 
 describe('Logout', () => {
+  /** Routes */
+  let routes;
+  before(() => {
+    cy.fixture('routes.json').then(r => {
+      routes = r;
+    });
+  });
+
   // Selectors.
   const loginFormSel = '[class^="Login-main-"]';
   const headerSel = '.headroom';
@@ -11,6 +19,7 @@ describe('Logout', () => {
     // Login as admin.
     cy.getAccount('admin').then(account => {
       cy.login(account.username, account.password);
+      cy.visit(routes.home);
     });
   });
 

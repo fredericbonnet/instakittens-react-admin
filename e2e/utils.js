@@ -37,28 +37,65 @@ async function clearInput(input) {
 }
 
 /**
- * Login using the app's login form.
+ * Log into the app.
+ *
+ * When *useForm* is true, use the app's login form.
+ *
+ * When *useForm* is false. the behavior of this function depends on the actual
+ * implementation of the authorization provider. A side effect is that the app
+ * isn't redirected to the Home Page automatically after login like the form does.
  *
  * @param {Page} page Puppeteer page.
  * @param {string} username Username.
  * @param {string} password Password.
+ * @param {useForm} full Whether to use the login form.
  */
-async function login(page, username, password) {
-  // Selectors.
-  const loginFormSel = '[class^="Login-main-"]';
-  const usernameInputSel = `${loginFormSel} input[name=username]`;
-  const passwordInputSel = `${loginFormSel} input[name=password]`;
-  const loginSubmitButtonSel = `${loginFormSel} button[type=submit]`;
+async function login(page, username, password, useForm) {
+  if (useForm) {
+    //
+    // "Slow" mode : use the login form.
+    //
 
-  // Login as user.
-  await page.goto(global.APP_ADDRESS + routes.login);
-  const usernameInput = await page.$(usernameInputSel);
-  const passwordInput = await page.$(passwordInputSel);
-  const loginSubmitButton = await page.$(loginSubmitButtonSel);
-  await setInputValue(usernameInput, username);
-  await setInputValue(passwordInput, password);
-  await loginSubmitButton.click();
-  await page.waitForSelector(loginFormSel, { hidden: true });
+    // Selectors.
+    const loginFormSel = '[class^="Login-main-"]';
+    const usernameInputSel = `${loginFormSel} input[name=username]`;
+    const passwordInputSel = `${loginFormSel} input[name=password]`;
+    const loginSubmitButtonSel = `${loginFormSel} button[type=submit]`;
+
+    // Login as user.
+    await page.goto(global.APP_ADDRESS + routes.login);
+    const usernameInput = await page.$(usernameInputSel);
+    const passwordInput = await page.$(passwordInputSel);
+    const loginSubmitButton = await page.$(loginSubmitButtonSel);
+    await setInputValue(usernameInput, username);
+    await setInputValue(passwordInput, password);
+    await loginSubmitButton.click();
+    await page.waitForSelector(loginFormSel, { hidden: true });
+  } else {
+    //
+    // "Fast" mode: simulate a successful login.
+    //
+
+    const account = accounts.find(
+      account => account.username === username && account.password === password
+    );
+
+    await page.evaluateOnNewDocument(account => {
+      /** Local storage key for Authorization HTTP header */
+      const AUTHORIZATION_HEADER_KEY = 'instakittens-auth-basic-header';
+
+      /** Local storage key for user role */
+      const USER_ROLE_KEY = 'instakittens-user-role';
+
+      // Build & store authorization header.
+      const authorization =
+        'Basic ' + btoa(account.username + ':' + account.password);
+      localStorage.setItem(AUTHORIZATION_HEADER_KEY, authorization);
+
+      // Store user role.
+      localStorage.setItem(USER_ROLE_KEY, account.role);
+    }, account);
+  }
 }
 
 module.exports = { getAccount, setInputValue, clearInput, login };

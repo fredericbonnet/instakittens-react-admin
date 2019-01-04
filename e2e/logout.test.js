@@ -1,4 +1,5 @@
 const { getAccount, login } = require('./utils');
+const routes = require('./routes.json');
 
 describe('Logout', () => {
   // Selectors.
@@ -14,6 +15,7 @@ describe('Logout', () => {
     // Login as admin.
     const account = getAccount('admin');
     await login(page, account.username, account.password);
+    await page.goto(global.APP_ADDRESS + routes.home);
 
     // Get DOM elements.
     profileButton = await page.$(profileButtonSel);

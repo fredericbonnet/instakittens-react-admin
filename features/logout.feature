@@ -8,6 +8,7 @@ Background:
     And I sign into the application
 
 Scenario: Logout
+   When I go to the Home Page
    Then I should see the Profile Menu Button
    When I click on the Profile Menu Button
    Then I should see the Logout Menu Item
