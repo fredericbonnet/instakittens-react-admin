@@ -30,6 +30,8 @@
     "cypress:run": "cypress run",
     "cypress:watch": "nodemon -e js,feature -x npm run cypress:run",
     "cypress:open": "cypress open",
+    "testcafe": "testcafe -c 4 chrome:headless testcafe/**/*.test.js",
+    "testcafe:watch": "nodemon -e js -x npm run testcafe",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,6 +51,7 @@
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.7.0",
     "nodemon": "^1.18.9",
-    "puppeteer": "^1.11.0"
+    "puppeteer": "^1.11.0",
+    "testcafe": "^0.23.3"
   }
 }
