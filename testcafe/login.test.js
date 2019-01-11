@@ -1,4 +1,4 @@
-import { Selector } from 'testcafe';
+const { Selector } = require('testcafe');
 
 require('./globals');
 
@@ -30,14 +30,14 @@ fixture('Login form > Validation')
   .page(global.APP_ADDRESS + routes.login)
   .beforeEach(async t => {
     // Clear form.
-    await clearInput(Selector(usernameInputSel));
-    await clearInput(Selector(passwordInputSel));
+    await clearInput(t, Selector(usernameInputSel));
+    await clearInput(t, Selector(passwordInputSel));
   });
 
 test('should require username', async t => {
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(usernameHelperSel).exists).ok();
-  await setInputValue(Selector(usernameInputSel), 'username');
+  await setInputValue(t, Selector(usernameInputSel), 'username');
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(usernameHelperSel).exists).notOk();
 });
@@ -45,7 +45,7 @@ test('should require username', async t => {
 test('should require password', async t => {
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(passwordHelperSel).exists).ok();
-  await setInputValue(Selector(passwordInputSel), 'password');
+  await setInputValue(t, Selector(passwordInputSel), 'password');
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(passwordHelperSel).exists).notOk();
 });
@@ -54,13 +54,13 @@ fixture('Login form > Submit')
   .page(global.APP_ADDRESS + routes.login)
   .beforeEach(async t => {
     // Clear form.
-    await clearInput(Selector(usernameInputSel));
-    await clearInput(Selector(passwordInputSel));
+    await clearInput(t, Selector(usernameInputSel));
+    await clearInput(t, Selector(passwordInputSel));
   });
 
 test('should reject unknown users', async t => {
-  await setInputValue(Selector(usernameInputSel), 'Unknown user');
-  await setInputValue(Selector(passwordInputSel), 'Unknown password');
+  await setInputValue(t, Selector(usernameInputSel), 'Unknown user');
+  await setInputValue(t, Selector(passwordInputSel), 'Unknown password');
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(usernameHelperSel).exists).notOk();
   await t.expect(Selector(passwordHelperSel).exists).notOk();
@@ -69,8 +69,8 @@ test('should reject unknown users', async t => {
 
 test('should reject users with bad password', async t => {
   const account = getAccount('user');
-  await setInputValue(Selector(usernameInputSel), account.username);
-  await setInputValue(Selector(passwordInputSel), 'Bad password');
+  await setInputValue(t, Selector(usernameInputSel), account.username);
+  await setInputValue(t, Selector(passwordInputSel), 'Bad password');
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(usernameHelperSel).exists).notOk();
   await t.expect(Selector(passwordHelperSel).exists).notOk();
@@ -79,8 +79,8 @@ test('should reject users with bad password', async t => {
 
 test('should redirect users with correct credentials to the login form', async t => {
   const account = getAccount('user');
-  await setInputValue(Selector(usernameInputSel), account.username);
-  await setInputValue(Selector(passwordInputSel), account.password);
+  await setInputValue(t, Selector(usernameInputSel), account.username);
+  await setInputValue(t, Selector(passwordInputSel), account.password);
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(usernameHelperSel).exists).notOk();
   await t.expect(Selector(passwordHelperSel).exists).notOk();
@@ -89,8 +89,8 @@ test('should redirect users with correct credentials to the login form', async t
 
 test('should accept admin with correct credentials', async t => {
   const account = getAccount('admin');
-  await setInputValue(Selector(usernameInputSel), account.username);
-  await setInputValue(Selector(passwordInputSel), account.password);
+  await setInputValue(t, Selector(usernameInputSel), account.username);
+  await setInputValue(t, Selector(passwordInputSel), account.password);
   await t.click(Selector(loginSubmitButtonSel));
   await t.expect(Selector(usernameHelperSel).exists).notOk();
   await t.expect(Selector(passwordHelperSel).exists).notOk();

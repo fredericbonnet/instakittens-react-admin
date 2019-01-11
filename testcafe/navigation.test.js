@@ -1,4 +1,4 @@
-import { Selector } from 'testcafe';
+const { Selector } = require('testcafe');
 
 require('./globals');
 
@@ -54,7 +54,7 @@ fixture('Navigation > Home page')
   .beforeEach(async t => {
     // Login as admin.
     const account = getAccount('admin');
-    await login(account.username, account.password);
+    await login(t, account.username, account.password);
     await t.navigateTo(global.APP_ADDRESS + routes.home);
   });
 
@@ -77,7 +77,7 @@ for (let resourceId in resources) {
     .beforeEach(async t => {
       // Login as admin.
       const account = getAccount('admin');
-      await login(account.username, account.password);
+      await login(t, account.username, account.password);
       await t.navigateTo(global.APP_ADDRESS + routes[resourceId]);
     });
 
@@ -106,7 +106,7 @@ for (let resourceId in resources) {
     .beforeEach(async t => {
       // Login as admin.
       const account = getAccount('admin');
-      await login(account.username, account.password);
+      await login(t, account.username, account.password);
 
       // Open first resource in list page.
       await t.navigateTo(global.APP_ADDRESS + routes[resourceId]);
@@ -142,7 +142,7 @@ for (let resourceId in resources) {
     .beforeEach(async t => {
       // Login as admin.
       const account = getAccount('admin');
-      await login(account.username, account.password);
+      await login(t, account.username, account.password);
 
       // Open first resource in list page.
       await t.navigateTo(global.APP_ADDRESS + routes[resourceId]);
