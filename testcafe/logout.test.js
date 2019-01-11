@@ -1,4 +1,4 @@
-import { Selector } from 'testcafe';
+const { Selector } = require('testcafe');
 
 require('./globals');
 
@@ -16,7 +16,7 @@ fixture('Logout')
   .beforeEach(async t => {
     // Login as admin.
     const account = getAccount('admin');
-    await login(account.username, account.password);
+    await login(t, account.username, account.password);
     await t.navigateTo(global.APP_ADDRESS + routes.home);
   });
 

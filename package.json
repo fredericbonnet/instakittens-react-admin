@@ -52,6 +52,7 @@
     "jest-puppeteer": "^3.7.0",
     "nodemon": "^1.18.9",
     "puppeteer": "^1.11.0",
-    "testcafe": "^0.23.3"
+    "testcafe": "^0.23.3",
+    "testcafe-live": "^0.1.4"
   }
 }

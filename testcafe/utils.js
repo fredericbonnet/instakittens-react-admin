@@ -2,7 +2,7 @@
  * Utilities.
  */
 
-import { t, Selector } from 'testcafe';
+const { Selector } = require('testcafe');
 
 const accounts = require('./test-accounts.json');
 const routes = require('./routes.json');
@@ -19,10 +19,11 @@ function getAccount(role) {
 /**
  * Set an input value by triple-clicking then typing characters.
  *
- * @param {Selector} input TestCafe selector of input to set.
+ * @param {TestController} t TestCafé test controller.
+ * @param {Selector} input TestCafé selector of input to set.
  * @param {string} value Value to set.
  */
-async function setInputValue(input, value) {
+async function setInputValue(t, input, value) {
   if (!value) return clearInput(t, input);
   await t.selectText(input).typeText(input, value);
 }
@@ -30,9 +31,10 @@ async function setInputValue(input, value) {
 /**
  * Clear an input by triple-clicking then pressing delete.
  *
- * @param {Selector} input TestCafe selector of input to clear.
+ * @param {TestController} t TestCafé test controller.
+ * @param {Selector} input TestCafé selector of input to clear.
  */
-async function clearInput(input) {
+async function clearInput(t, input) {
   await t.selectText(input).pressKey('delete');
 }
 
@@ -45,11 +47,12 @@ async function clearInput(input) {
  * implementation of the authorization provider. A side effect is that the app
  * isn't redirected to the Home Page automatically after login like the form does.
  *
+ * @param {TestController} t TestCafé test controller.
  * @param {string} username Username.
  * @param {string} password Password.
  * @param {useForm} full Whether to use the login form.
  */
-async function login(username, password, useForm) {
+async function login(t, username, password, useForm) {
   if (useForm) {
     //
     // "Slow" mode : use the login form.
@@ -63,9 +66,17 @@ async function login(username, password, useForm) {
 
     // Login as user.
     await t.navigateTo(global.APP_ADDRESS + routes.login);
-    await setInputValue(Selector(usernameInputSel), username);
-    await setInputValue(Selector(passwordInputSel), password);
-    await t.click(Selector(loginSubmitButtonSel));
+    await setInputValue(
+      t,
+      Selector(usernameInputSel).with({ boundTestRun: t }),
+      username
+    );
+    await setInputValue(
+      t,
+      Selector(passwordInputSel).with({ boundTestRun: t }),
+      password
+    );
+    await t.click(Selector(loginSubmitButtonSel).with({ boundTestRun: t }));
   } else {
     //
     // "Fast" mode: simulate a successful login.
