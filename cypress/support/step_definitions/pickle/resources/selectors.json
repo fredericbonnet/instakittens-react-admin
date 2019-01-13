@@ -1,0 +1,32 @@
+{
+  "Resource Menu": {
+    "default": ".Menu-main",
+    "Menu Item": "[role=menuitem]"
+  },
+  "Resource List": {
+    "default": ".Datagrid",
+    "User Link": ".column-user_id a > *",
+    "Album Link": ".column-album a > *",
+    "Photo Link": ".column-photo_id a > *"
+  },
+  "Resource Show Page": {
+    "default": ".show-page",
+    "User Link": ".ra-field-user_id a > *",
+    "Album Link": ".ra-field-album_id a > *",
+    "Photo Link": ".ra-field-photo_id a > *",
+    "Tab": ".show-tab",
+    "Albums Tab": ".show-tab[path=albums]",
+    "Photos Tab": ".show-tab[path=photos]",
+    "Comments Tab": ".show-tab[path=comments]"
+  },
+  "Resource Edit Page": {
+    "default": ".edit-page",
+    "User Input": "input[name=user_id]",
+    "Album Input": "input[name=album_id]",
+    "Photo Input": "input[name=photo_id]",
+    "Tab": ".form-tab",
+    "Albums Tab": ".form-tab[path=albums]",
+    "Photos Tab": ".form-tab[path=photos]",
+    "Comments Tab": ".form-tab[path=comments]"
+  }
+}

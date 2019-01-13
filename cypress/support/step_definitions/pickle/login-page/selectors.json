@@ -1,0 +1,11 @@
+{
+  "Login Form": {
+    "default": ".Login-main",
+    "Username Input": "input[name=username]",
+    "Password Input": "input[name=password]",
+    "Username Helper Text": "#username-helper-text",
+    "Password Helper Text": "#password-helper-text",
+    "Sign In Button": ".button[type=submit]"
+  },
+  "Warning Message": ".Connect-Notification--warning"
+}

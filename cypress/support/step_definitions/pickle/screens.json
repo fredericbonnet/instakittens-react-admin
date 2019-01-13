@@ -1,0 +1,8 @@
+{
+  "Home Page": "http://localhost:3001/",
+  "Login Page": "http://localhost:3001/#/login",
+  "Users List Page": "http://localhost:3001/#/users",
+  "Albums List Page": "http://localhost:3001/#/albums",
+  "Photos List Page": "http://localhost:3001/#/photos",
+  "Comments List Page": "http://localhost:3001/#/comments"
+}

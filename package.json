@@ -52,6 +52,7 @@
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.7.0",
     "nodemon": "^1.18.9",
+    "picklejs": "git+https://github.com/hoverinc/picklejs.git",
     "puppeteer": "^1.11.0",
     "testcafe": "^0.23.3",
     "testcafe-live": "^0.1.4"

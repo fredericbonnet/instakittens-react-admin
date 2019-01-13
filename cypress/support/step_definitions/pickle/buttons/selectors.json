@@ -1,0 +1,7 @@
+{
+  "Show Button": "[role=button]:contains(Show)",
+  "Create Button": "[role=button]:contains(Create)",
+  "Edit Button": "[role=button]:contains(Edit)",
+  "Delete Button": "button.ra-delete-button",
+  "Save Button": "button.SaveButton"
+}
