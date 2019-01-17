@@ -33,7 +33,7 @@ export { UserIcon };
 
 /** User reference field */
 export const UserReferenceField = props => (
-  <ReferenceField reference="users" {...props}>
+  <ReferenceField reference="users" allowEmpty {...props}>
     <TextField source="username" />
   </ReferenceField>
 );
@@ -43,7 +43,7 @@ UserReferenceField.defaultProps = {
 
 /** User reference input. */
 export const UserReferenceInput = props => (
-  <ReferenceInput reference="users" {...props}>
+  <ReferenceInput reference="users" allowEmpty {...props}>
     <AutocompleteInput optionText="username" />
   </ReferenceInput>
 );
