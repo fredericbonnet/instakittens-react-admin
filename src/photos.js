@@ -36,7 +36,7 @@ export { PhotoIcon };
 
 /** Photo reference field */
 export const PhotoReferenceField = props => (
-  <ReferenceField reference="photos" {...props}>
+  <ReferenceField reference="photos" allowEmpty {...props}>
     <TextField source="title" />
   </ReferenceField>
 );
@@ -46,7 +46,7 @@ PhotoReferenceField.defaultProps = {
 
 /** Photo reference input. */
 export const PhotoReferenceInput = props => (
-  <ReferenceInput reference="photos" {...props}>
+  <ReferenceInput reference="photos" allowEmpty {...props}>
     <AutocompleteInput optionText="title" />
   </ReferenceInput>
 );

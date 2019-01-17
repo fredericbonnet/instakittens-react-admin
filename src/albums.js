@@ -33,7 +33,7 @@ export { AlbumIcon };
 
 /** Album reference field */
 export const AlbumReferenceField = props => (
-  <ReferenceField reference="albums" {...props}>
+  <ReferenceField reference="albums" allowEmpty {...props}>
     <TextField source="title" />
   </ReferenceField>
 );
@@ -43,7 +43,7 @@ AlbumReferenceField.defaultProps = {
 
 /** Album reference input. */
 export const AlbumReferenceInput = props => (
-  <ReferenceInput reference="albums" {...props}>
+  <ReferenceInput reference="albums" allowEmpty {...props}>
     <AutocompleteInput optionText="title" />
   </ReferenceInput>
 );
