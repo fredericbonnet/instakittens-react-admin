@@ -25,3 +25,6 @@ import './commands';
 import './assertions';
 
 import './utils';
+
+// Import Cucumber-specific commands
+import './cucumber';

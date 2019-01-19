@@ -44,7 +44,12 @@ AlbumReferenceField.defaultProps = {
 /** Album reference input. */
 export const AlbumReferenceInput = props => (
   <ReferenceInput reference="albums" allowEmpty {...props}>
-    <AutocompleteInput optionText="title" />
+    <AutocompleteInput
+      optionText="title"
+      shouldRenderSuggestions={val => {
+        return val.trim().length > 2;
+      }}
+    />
   </ReferenceInput>
 );
 
@@ -56,7 +61,7 @@ export const AlbumReferenceManyField = props => (
     reference="albums"
     {...props}
   >
-    <Datagrid>
+    <Datagrid data-testid="album-reference-list">
       <TextField source="id" />
       {props.target !== 'user_id' && <UserReferenceField source="user_id" />}
       <TextField source="title" />

@@ -47,7 +47,12 @@ PhotoReferenceField.defaultProps = {
 /** Photo reference input. */
 export const PhotoReferenceInput = props => (
   <ReferenceInput reference="photos" allowEmpty {...props}>
-    <AutocompleteInput optionText="title" />
+    <AutocompleteInput
+      optionText="title"
+      shouldRenderSuggestions={val => {
+        return val.trim().length > 2;
+      }}
+    />
   </ReferenceInput>
 );
 
@@ -59,7 +64,7 @@ export const PhotoReferenceManyField = props => (
     reference="photos"
     {...props}
   >
-    <Datagrid>
+    <Datagrid data-testid="photo-reference-list">
       <TextField source="id" />
       {props.target !== 'album_id' && <AlbumReferenceField source="album_id" />}
       <TextField source="title" />
