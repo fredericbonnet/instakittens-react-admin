@@ -34,7 +34,7 @@ export const CommentReferenceManyField = props => (
     reference="comments"
     {...props}
   >
-    <Datagrid>
+    <Datagrid data-testid="comment-reference-list">
       <TextField source="id" />
       {props.target !== 'photo_id' && <PhotoReferenceField source="photo_id" />}
       {props.target !== 'user_id' && <UserReferenceField source="user_id" />}
