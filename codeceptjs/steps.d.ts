@@ -278,6 +278,7 @@ declare namespace CodeceptJS {
     waitForDetached(locator: string, sec: number) : void,
     debug(msg: string) : void,
     debugSection(section: string, msg: string) : void,
+    getWorld() : void,
     login(username: string, password: string, useForm: string) : void,
     say: () => any; 
     retryStep(opts: string) : void,

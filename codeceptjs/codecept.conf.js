@@ -8,6 +8,9 @@ exports.config = {
       restart: false,
       keepBrowserState: false,
     },
+    World: {
+      require: './world_helper.js',
+    },
   },
   include: {
     I: './steps.js',
@@ -17,8 +20,18 @@ exports.config = {
   bootstrap: null,
   teardown: null,
   hooks: [],
+  gherkin: {
+    features: './features/**/*.feature',
+    steps: [
+      './step_definitions/steps.js',
+      ...glob.sync('./step_definitions/**/*.steps.js', { cwd: __dirname }),
+    ],
+  },
   plugins: {
     screenshotOnFail: {
+      enabled: true,
+    },
+    retryFailedStep: {
       enabled: true,
     },
   },
