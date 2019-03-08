@@ -32,7 +32,7 @@
     "cypress:open": "cypress open",
     "testcafe": "testcafe -c 4 chrome:headless testcafe/**/*.test.js",
     "testcafe:watch": "testcafe --live chrome testcafe/**/*.test.js",
-    "codeceptjs": "codeceptjs run --config codeceptjs/codecept.conf.js",
+    "codeceptjs": "codeceptjs run --steps --config codeceptjs/codecept.conf.js",
     "codeceptjs:watch": "nodemon -e js,feature -x npm run codeceptjs",
     "eject": "react-scripts eject"
   },
