@@ -32,6 +32,8 @@
     "cypress:open": "cypress open",
     "testcafe": "testcafe -c 4 chrome:headless testcafe/**/*.test.js",
     "testcafe:watch": "testcafe --live chrome testcafe/**/*.test.js",
+    "codeceptjs": "codeceptjs run --config codeceptjs/codecept.conf.js",
+    "codeceptjs:watch": "nodemon -e js,feature -x npm run codeceptjs",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,6 +48,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-exclude": "^1.0.12",
+    "codeceptjs": "^2.0.7",
     "cucumber": "^5.0.3",
     "cypress": "^3.1.5",
     "cypress-cucumber-preprocessor": "^1.9.1",
