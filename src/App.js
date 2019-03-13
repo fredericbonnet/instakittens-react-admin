@@ -23,6 +23,7 @@ import {
   CommentShow,
   CommentEdit,
 } from './comments';
+import LoginPage from './LoginPage';
 
 import jsonServerProvider from 'ra-data-json-server';
 import { authProvider, httpClient } from './auth-basic';
@@ -35,7 +36,11 @@ const dataProvider = jsonServerProvider(
 );
 
 const App = () => (
-  <Admin dataProvider={dataProvider} authProvider={authProvider}>
+  <Admin
+    dataProvider={dataProvider}
+    authProvider={authProvider}
+    loginPage={LoginPage}
+  >
     <Resource
       name="users"
       icon={UserIcon}
