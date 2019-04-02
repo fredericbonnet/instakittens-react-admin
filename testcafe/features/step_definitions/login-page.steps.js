@@ -1,7 +1,5 @@
 const { When, Then } = require('cucumber');
 
-require('../../globals');
-
 const { setInputValue } = require('../../utils');
 const routes = require('../../routes.json');
 

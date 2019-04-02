@@ -30,8 +30,8 @@
     "cypress:run": "cypress run",
     "cypress:watch": "nodemon -e js,feature -x npm run cypress:run",
     "cypress:open": "cypress open",
-    "testcafe": "testcafe -c 4 chrome:headless testcafe/**/*.test.js",
-    "testcafe:watch": "testcafe --live chrome testcafe/**/*.test.js",
+    "testcafe": "testcafe -c 4 chrome:headless",
+    "testcafe:watch": "testcafe --live chrome",
     "codeceptjs": "codeceptjs run --config codeceptjs/codecept.conf.js",
     "codeceptjs:watch": "nodemon -e js,feature -x npm run codeceptjs",
     "eject": "react-scripts eject"
@@ -57,6 +57,6 @@
     "nodemon": "^1.18.9",
     "picklejs": "git+https://github.com/hoverinc/picklejs.git",
     "puppeteer": "^1.11.0",
-    "testcafe": "^1.0.0"
+    "testcafe": "^1.1.0"
   }
 }

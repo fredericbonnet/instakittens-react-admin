@@ -1,7 +1,5 @@
 const { Selector } = require('testcafe');
 
-require('./globals');
-
 const { getAccount, login } = require('./utils');
 const routes = require('./routes.json');
 

@@ -1,0 +1,3 @@
+{
+  "src": ["testcafe/globals.js", "testcafe/**/*.test.js"]
+}
