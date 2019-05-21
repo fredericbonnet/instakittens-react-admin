@@ -30,8 +30,8 @@
     "cypress:run": "cypress run",
     "cypress:watch": "nodemon -e js,feature -x npm run cypress:run",
     "cypress:open": "cypress open",
-    "testcafe": "testcafe -c 4 chrome:headless",
-    "testcafe:watch": "testcafe --live chrome",
+    "testcafe": "node testcafe",
+    "testcafe:watch": "node testcafe --live",
     "codeceptjs": "codeceptjs run --config codeceptjs/codecept.conf.js",
     "codeceptjs:watch": "nodemon -e js,feature -x npm run codeceptjs",
     "eject": "react-scripts eject"

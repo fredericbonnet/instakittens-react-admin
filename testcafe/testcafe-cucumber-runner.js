@@ -10,6 +10,46 @@ const {
 } = require('cucumber');
 
 /**
+ * Discover Cucumber tests.
+ *
+ * The code is adapted from Cucumber's `Cli.run()`.
+ *
+ * @param {string} cwd Cucumber root directory with all features, step definitions and support files
+ * @param {*[]} args Extra Cucumber CLI arguments (e.g. tags)
+ *
+ * @example Get tests for a specific feature file:
+ * await discoverCucumberTests(t, cwd, ['features/example.feature'])
+ *
+ * @example Get tagged tests:
+ * await discoverCucumberTests(t, cwd, ['--tags', '@tag1 and not @tag2'])
+ */
+async function discoverCucumberTests(cwd, args) {
+  // Create `Cli` object.
+  if (!args) args = [];
+  const cli = new Cli({
+    cwd,
+    argv: [process.argv[0], '', ...args],
+    stdout: process.stdout,
+  });
+
+  // Get configuration object.
+  const configuration = await cli.getConfiguration();
+
+  // Discover test cases.
+  const eventBroadcaster = new EventEmitter();
+  const testCases = await getTestCasesFromFilesystem({
+    cwd,
+    eventBroadcaster,
+    featureDefaultLanguage: configuration.featureDefaultLanguage,
+    featurePaths: configuration.featurePaths,
+    order: configuration.order,
+    pickleFilter: new PickleFilter(configuration.pickleFilterOptions),
+  });
+
+  return testCases;
+}
+
+/**
  * Cucumber runner for TestCafé.
  *
  * Executes all matching scenarios with the given test controller. The controller is passed as
@@ -79,4 +119,4 @@ async function testcafeCucumberRunner(t, cwd, args) {
   return success;
 }
 
-module.exports = testcafeCucumberRunner;
+module.exports = { discoverCucumberTests, testcafeCucumberRunner };

@@ -1,17 +1,39 @@
 /**
  * Entry point for Cucumber tests.
  *
- * Note: as TestCafe does not support asynchronous test generation, all Cucumber scenarios are executed
- * in the same context. If you need isolated execution then you can call this runner from several TestCafé
- * tests or fixtures, and filter the scenarios using extra CLi arguments such as tags or glob patterns.
+ * As TestCafe does not support asynchronous test generation, we must run a
+ * Cucumber scenario discovery pass before starting the TestCafé runner. Each
+ * scenario is then executed in its own TestCafé test with *testcafeCucumberRunner*.
+ *
+ * The discovered tests are expected in the *global.cucumberTestCases* variable
+ * initialized in the startup code (*index.js*).
  */
-import {} from 'testcafe';
+import { testcafeCucumberRunner } from './testcafe-cucumber-runner';
 
-const testcafeCucumberRunner = require('./testcafe-cucumber-runner');
+/** Cucumber CLI arguments. */
+const cucumberArgs = [
+  '--format',
+  'summary',
+  // '--exit',
+];
 
-fixture(`Cucumber`);
+// Iterate over scenarios and group them by feature file.
+let currentUri;
+for (let testCase of global.cucumberTestCases) {
+  if (currentUri !== testCase.uri) {
+    fixture(`Feature: ${testCase.uri}`);
+    currentUri = testCase.uri;
+  }
 
-test('Features', async t => {
-  const success = await testcafeCucumberRunner(t, __dirname);
-  if (!success) throw new Error('At least one scenario failed');
-});
+  const scenarioName = testCase.pickle.name;
+  const scenarioLocation = `${testCase.uri}:${
+    testCase.pickle.locations[0].line
+  }`;
+  test(`Scenario: ${scenarioName}`, async t => {
+    const success = await testcafeCucumberRunner(t, __dirname, [
+      ...cucumberArgs,
+      scenarioLocation,
+    ]);
+    if (!success) throw new Error('Scenario failed');
+  });
+}
