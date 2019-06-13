@@ -7,6 +7,96 @@ It is based on the awesome [React-admin](https://github.com/marmelab/react-admin
 
 It connects to the [Instakittens JSON Server](https://github.com/fredericbonnet/instakittens-json-server) backend on port 3000.
 
+## NPM Scripts
+
+### Serving the app
+
+Start the development server on port 3001:
+
+```sh
+npm run start
+```
+
+### Unit tests
+
+Run Jest unit tests in watch mode:
+
+```sh
+npm run test
+```
+
+### End-to-end tests
+
+End-to-end tests need a running development server on port 3001.
+
+#### Puppeteer
+
+Run Puppeteer tests once:
+
+```sh
+npm run e2e
+```
+
+Run Puppeteer tests in watch mode:
+
+```sh
+npm run e2e:watch
+```
+
+Run Puppeteer Cucumber scenarios once:
+
+```sh
+npm run cucumber
+```
+
+Run Puppeteer Cucumber scenarios in watch mode:
+
+```sh
+npm run cucumber:watch
+```
+
+#### Cypress
+
+Run Cypress tests & scenarios once:
+
+```sh
+npm run cypress:run
+```
+
+Open Cypress GUI:
+
+```sh
+npm run cypress:open
+```
+
+#### TestCafé
+
+Run TestCafé tests & scenarios once:
+
+```sh
+npm run testcafe
+```
+
+Run TestCafé tests & scenarios in watch mode:
+
+```sh
+npm run testcafe:watch
+```
+
+#### CodeceptJS
+
+Run CodeceptJS tests & scenarios once:
+
+```sh
+npm run codeceptjs
+```
+
+Run CodeceptJS tests & scenarios in watch mode:
+
+```sh
+npm run codeceptjs:watch
+```
+
 ## Project bootstrap
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) along with the React-Admin dependencies.
@@ -18,8 +108,6 @@ npm install react-admin ra-data-json-server prop-types
 ```
 
 The app's default port 3000 has been changed to 3001 in the [.env](.env) file.
-
-## Available Scripts
 
 In the project directory, you can run:
 
