@@ -18,22 +18,24 @@ const cucumberArgs = [
 ];
 
 // Iterate over scenarios and group them by feature file.
-let currentUri;
-for (let testCase of global.cucumberTestCases) {
-  if (currentUri !== testCase.uri) {
-    fixture(`Feature: ${testCase.uri}`);
-    currentUri = testCase.uri;
-  }
+if (global.cucumberTestCases) {
+  let currentUri;
+  for (let testCase of global.cucumberTestCases) {
+    if (currentUri !== testCase.uri) {
+      fixture(`Feature: ${testCase.uri}`);
+      currentUri = testCase.uri;
+    }
 
-  const scenarioName = testCase.pickle.name;
-  const scenarioLocation = `${testCase.uri}:${
-    testCase.pickle.locations[0].line
-  }`;
-  test(`Scenario: ${scenarioName}`, async t => {
-    const success = await testcafeCucumberRunner(t, __dirname, [
-      ...cucumberArgs,
-      scenarioLocation,
-    ]);
-    if (!success) throw new Error('Scenario failed');
-  });
+    const scenarioName = testCase.pickle.name;
+    const scenarioLocation = `${testCase.uri}:${
+      testCase.pickle.locations[0].line
+    }`;
+    test(`Scenario: ${scenarioName}`, async t => {
+      const success = await testcafeCucumberRunner(t, __dirname, [
+        ...cucumberArgs,
+        scenarioLocation,
+      ]);
+      if (!success) throw new Error('Scenario failed');
+    });
+  }
 }
