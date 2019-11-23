@@ -12,11 +12,11 @@
     "url": "https://github.com/fredericbonnet/instakittens-react-admin.git"
   },
   "dependencies": {
-    "prop-types": "^15.6.2",
-    "ra-data-json-server": "^2.4.2",
-    "react": "^16.6.3",
-    "react-admin": "^2.5.2",
-    "react-dom": "^16.6.3",
+    "prop-types": "^15.7.2",
+    "ra-data-json-server": "^2.9.9",
+    "react": "^16.12.0",
+    "react-admin": "^2.9.9",
+    "react-dom": "^16.12.0",
     "react-scripts": "^3.2.0"
   },
   "scripts": {
@@ -47,16 +47,16 @@
   ],
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-exclude": "^1.0.12",
-    "codeceptjs": "^2.0.7",
-    "cucumber": "^5.0.3",
+    "chai-exclude": "^2.0.2",
+    "codeceptjs": "^2.3.6",
+    "cucumber": "^6.0.5",
     "cypress": "^3.6.1",
     "cypress-cucumber-preprocessor": "^1.16.2",
     "jest": "^24.9.0",
     "jest-puppeteer": "^4.3.0",
     "nodemon": "^2.0.1",
-    "picklejs": "git+https://github.com/hoverinc/picklejs.git",
+    "picklejs": "^0.101.0",
     "puppeteer": "^1.20.0",
-    "testcafe": "^1.1.0"
+    "testcafe": "^1.7.0"
   }
 }
