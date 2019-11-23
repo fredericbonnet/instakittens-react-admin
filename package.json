@@ -17,7 +17,7 @@
     "react": "^16.6.3",
     "react-admin": "^2.5.2",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts": "^3.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,13 +50,13 @@
     "chai-exclude": "^1.0.12",
     "codeceptjs": "^2.0.7",
     "cucumber": "^5.0.3",
-    "cypress": "^3.1.5",
-    "cypress-cucumber-preprocessor": "^1.9.1",
-    "jest": "^23.6.0",
-    "jest-puppeteer": "^3.7.0",
-    "nodemon": "^1.18.9",
+    "cypress": "^3.6.1",
+    "cypress-cucumber-preprocessor": "^1.16.2",
+    "jest": "^24.9.0",
+    "jest-puppeteer": "^4.3.0",
+    "nodemon": "^2.0.1",
     "picklejs": "git+https://github.com/hoverinc/picklejs.git",
-    "puppeteer": "^1.11.0",
+    "puppeteer": "^1.20.0",
     "testcafe": "^1.1.0"
   }
 }
