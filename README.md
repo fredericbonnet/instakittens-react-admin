@@ -55,6 +55,32 @@ Run Puppeteer Cucumber scenarios in watch mode:
 npm run cucumber:watch
 ```
 
+#### Playwright
+
+Run Playwright tests once:
+
+```sh
+npm run e2e-playwright
+```
+
+Run Playwright tests in watch mode:
+
+```sh
+npm run e2e-playwright:watch
+```
+
+Run Playwright Cucumber scenarios once:
+
+```sh
+npm run cucumber-playwright
+```
+
+Run Playwright Cucumber scenarios in watch mode:
+
+```sh
+npm run cucumber-playwright:watch
+```
+
 #### Cypress
 
 Run Cypress tests & scenarios once:

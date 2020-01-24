@@ -1,0 +1,8 @@
+{
+  "home": "",
+  "login": "#/login",
+  "users": "#/users",
+  "albums": "#/albums",
+  "photos": "#/photos",
+  "comments": "#/comments"
+}

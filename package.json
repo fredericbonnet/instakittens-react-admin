@@ -27,6 +27,10 @@
     "e2e:watch": "cd puppeteer && jest -c e2e/jest.config.js --watch",
     "cucumber": "cd puppeteer && cucumber-js",
     "cucumber:watch": "nodemon -e js,feature -x npm run cucumber -- -- --profile watch",
+    "e2e-playwright": "cd playwright && jest -c e2e/jest.config.js",
+    "e2e-playwright:watch": "cd playwright && jest -c e2e/jest.config.js --watch",
+    "cucumber-playwright": "cd playwright && cucumber-js",
+    "cucumber-playwright:watch": "nodemon -e js,feature -x npm run cucumber-playwright -- -- --profile watch",
     "cypress:run": "cypress run",
     "cypress:watch": "nodemon -e js,feature -x npm run cypress:run",
     "cypress:open": "cypress open",
@@ -56,6 +60,7 @@
     "jest-puppeteer": "^4.3.0",
     "nodemon": "^2.0.1",
     "picklejs": "^0.101.0",
+    "playwright": "^0.9.21",
     "puppeteer": "^1.20.0",
     "testcafe": "^1.7.0"
   }
