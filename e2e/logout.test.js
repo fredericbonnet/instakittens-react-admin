@@ -35,7 +35,6 @@ describe('Logout', () => {
     await profileButton.click();
     const logoutButton = await page.$(logoutButtonSel);
     await logoutButton.click();
-    await page.waitForNavigation();
     await page.waitForSelector(loginFormSel, { visible: true });
   });
 });
