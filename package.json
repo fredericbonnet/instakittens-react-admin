@@ -52,7 +52,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-exclude": "^2.0.2",
-    "codeceptjs": "^2.3.6",
+    "codeceptjs": "^3.0.0",
     "cucumber": "^6.0.5",
     "cypress": "^3.6.1",
     "cypress-cucumber-preprocessor": "^1.16.2",
