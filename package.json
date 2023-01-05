@@ -62,6 +62,6 @@
     "picklejs": "^0.101.0",
     "playwright": "^0.9.21",
     "puppeteer": "^1.20.0",
-    "testcafe": "^1.7.0"
+    "testcafe": "^1.20.1"
   }
 }
