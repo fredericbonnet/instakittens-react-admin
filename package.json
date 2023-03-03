@@ -54,7 +54,7 @@
     "chai-exclude": "^2.0.2",
     "codeceptjs": "^2.3.6",
     "cucumber": "^6.0.5",
-    "cypress": "^3.6.1",
+    "cypress": "^12.7.0",
     "cypress-cucumber-preprocessor": "^1.16.2",
     "jest": "^24.9.0",
     "jest-puppeteer": "^4.3.0",
